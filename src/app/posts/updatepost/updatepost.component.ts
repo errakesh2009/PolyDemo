@@ -74,6 +74,7 @@ export class UpdatepostComponent implements OnInit {
         if (x.code == 204) {
           this.response = "Post deleted successfully.";
           this.showSuccessMessage = true;
+          this.postForm.reset();
         }
         else {
           this.showErrorMessage = true;

@@ -76,6 +76,7 @@ export class UpdateuserComponent implements OnInit {
       if (x.code == 204) {
         this.response="User deleted successfully.";
         this.showSuccessMessage = true;
+        this.userForm.reset();
       }
       else{
         this.showErrorMessage = true;

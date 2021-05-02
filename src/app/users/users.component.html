@@ -32,11 +32,17 @@
         </table>
       </div>
     </div>
-    <div class="card-footer">
+    <div class="card-header row">
       <button type="button" (click)="previous()" class="btn btn-info">Previous</button>
-      <span style="margin: 5px;">Page: {{CurrentPage}} of {{TotalPages}}</span>
-      <button type="button" (click)="next()" class="btn btn-info">Next</button>
-    </div>  
+      <button type="button" (click)="next()" class="btn btn-info" style="margin-left: 10px;">Next</button>
+      <span style="margin-left: 10px;margin-right: 10px;">Page:</span>
+      <input #i type="text" inputmode="numeric" pattern="[0-9]*" style="width: 50px;" class="form-control" id="paginationInput"
+        [(value)]="CurrentPage" (keyup.enter)="selectPage(i.value)" (blur)="selectPage(i.value)"
+        (input)="formatInput($any($event).target)" aria-labelledby="paginationInputLabel paginationDescription"
+        />
+      <span  style="margin-left: 10px;margin-right: 10px;">of {{TotalPages}}</span>
+      
+    </div>
   </div>
 </div>
 <app-confirmdialog></app-confirmdialog>

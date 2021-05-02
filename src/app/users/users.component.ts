@@ -5,6 +5,8 @@ import { usermodel } from '../model/usermodel';
 import { GridAPIService } from '../services/grid-apiservice.service';
 import { ConfirmDialogService } from '../shared/modelpopup/ConfirmDialogService';
 
+const FILTER_PAG_REGEX = /[^0-9]/g;
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -42,6 +44,21 @@ export class UsersComponent implements OnInit {
       this.GetUsersByPageNo(this.CurrentPage + 1);
     }
   }
+  selectPage(page: string) {
+    this.CurrentPage = parseInt(page, 10);
+
+    if(this.CurrentPage <= 1) 
+      this.CurrentPage = 1;
+    else if(this.CurrentPage>this.TotalPages) 
+      this.CurrentPage = this.TotalPages;
+      
+    this.GetUsersByPageNo(this.CurrentPage);
+  }
+  
+  formatInput(input: HTMLInputElement) {
+    input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  }
+
   deleteConfirmation(id: number) {
     this.confirmDialogService.confirmThis("Are you sure you want to delete?","Delete Confirmation", () => {
       this.deleteUser(id);

@@ -4,6 +4,8 @@ import { postmodel } from '../model/postmodel';
 import { GridAPIService } from '../services/grid-apiservice.service';
 import { ConfirmDialogService } from '../shared/modelpopup/ConfirmDialogService';
 
+const FILTER_PAG_REGEX = /[^0-9]/g;
+
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
@@ -39,6 +41,20 @@ export class PostsComponent implements OnInit {
     if (this.CurrentPage < this.TotalPages) {
       this.GetPostsByPageNo(this.CurrentPage + 1);
     }
+  }
+  selectPage(page: string) {
+    this.CurrentPage = parseInt(page, 10);
+
+    if(this.CurrentPage <= 1) 
+      this.CurrentPage = 1;
+    else if(this.CurrentPage>this.TotalPages) 
+      this.CurrentPage = this.TotalPages;
+      
+    this.GetPostsByPageNo(this.CurrentPage);
+  }
+
+  formatInput(input: HTMLInputElement) {
+    input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
   deleteConfirmation(id: number) {
