@@ -1,4 +1,4 @@
-export interface usermodel{
+export class usermodel{
     id:number;
     name:string;
     email:string;

@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="#">User Post Management</a>
+    <a class="navbar-brand" href="#">
+      <img src="../../../assets/poly-logo.svg" style="width: 25px;margin-right: 4px;" alt="Poly Propeller">
+      <img src="../../../assets/poly-name.svg" style="width: 37px;" alt="Poly Name">      
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
       aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -8,7 +11,7 @@
       <ul class="navbar-nav mr-auto">
   
         <li class="nav-item">
-          <a class="nav-link" [routerLinkActive]="['active']" routerLink='/home'>Posts</a>
+          <a class="nav-link" [routerLinkActive]="['active']" routerLink='/posts'>Posts</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLinkActive]="['active']" routerLink='/users'>Users</a>

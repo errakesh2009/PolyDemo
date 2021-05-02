@@ -1,0 +1,43 @@
+<div class="jumbotron">
+  <div class="card">
+    <div class="card-header bg-light">
+      <a class="btn btn-primary" routerLink='/createpost' role="button">Create Post</a>
+    </div>
+    <div class="card-body">
+      <div>
+        <table class="table table-hover">
+          <thead class="bg-info">
+            <tr class="d-flex">              
+              <th class="col-1">User</th>
+              <th class="col-10">Title</th>
+              <th class="col-1">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of GridRowData; index as i;" class="d-flex">              
+              <td class="col-1"><a class="btn btn-link" role="button" [routerLink]="['/userposts']"
+                  [queryParams]="{id: item.user_id}">{{item.user_id}}</a></td>
+              <td class="col-10">{{item.title}}</td>
+              <td class="col-1">                
+                <a><img src="../../assets/edit.png" style="width: 30px;" [routerLink]="['/updatepost']"
+                  [queryParams]="{id: item.id}" alt="edit" title="Edit Post">
+                </a>
+                <a><img src="../../assets/delete.png" style="width: 35px;" (click)="deleteConfirmation(item.id)" 
+                  alt="delete" title="Delete Post">
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-header">
+    <button type="button" (click)="previous()" class="btn btn-info">Previous</button>
+    <span style="margin: 5px;">Page: {{CurrentPage}} of {{TotalPages}}</span>
+    <button type="button" (click)="next()" class="btn btn-info">Next</button>
+  </div>
+</div>
+
+<app-confirmdialog></app-confirmdialog>

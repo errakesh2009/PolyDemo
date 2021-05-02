@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { GridAPIService } from '../services/grid-apiservice.service';
+import { GridAPIService } from '../../services/grid-apiservice.service';
 
 @Component({
   selector: 'app-createuser',
@@ -11,7 +11,9 @@ export class CreateuserComponent implements OnInit {
 
   userForm:FormGroup; 
   response:any;
-  
+  showSuccessMessage:boolean=false;
+  showErrorMessage:boolean=false;
+
   constructor(private gridApiService:GridAPIService,private fb: FormBuilder) { } 
 
   ngOnInit(): void { 
@@ -23,7 +25,8 @@ export class CreateuserComponent implements OnInit {
   }
 
   onSubmit() {
-    
+    this.showSuccessMessage = false;
+    this.showErrorMessage = false;
     var userData = 
                      {
                          "name": this.userForm.value.name,
@@ -34,9 +37,15 @@ export class CreateuserComponent implements OnInit {
     console.log(userData);
     this.gridApiService.createUser(userData)
     .subscribe(x=>{
-      console.log(x);
-      this.response = x.data;
-      this.userForm.reset();
+      if (x.code == 201) {
+        this.showSuccessMessage = true;
+        this.response="User created successfully.";
+        this.userForm.reset();
+      }
+      else{
+        this.showErrorMessage = true;
+        this.response = x;
+      }
     });
   }
 }

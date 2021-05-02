@@ -1,0 +1,63 @@
+<div class="jumbotron" style="background-color: #fff;">
+    <div class="card">
+        <div class="card-header bg-info">
+            <span>User Detail</span>  
+        </div>
+    </div>
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="name">Name:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="name" disabled [(ngModel)]="user.name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="email" disabled [(ngModel)]="user.email">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="gender">Gender:</label>
+        <div class="col-sm-10">
+            <select class="form-control" name="gender" disabled [(ngModel)]="user.gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            </select> 
+        </div>
+      </div>
+  </form>
+  <div class="card">
+    <div class="card-header bg-info">
+        <span>Posts</span>  
+    </div>
+    <div class="card-body position-relative"> 
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Post Id</th>
+                    <th>Post Title</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of posts; index as i;">
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>
+                      <!-- <a class="btn btn-link" role="button" [routerLink]="['/updatepost']"
+                      [queryParams]="{id: item.id}">Detail</a> -->
+                      <a><img src="../../../assets/edit.png" style="width: 25px;" [routerLink]="['/updatepost']"
+                        [queryParams]="{id: item.id}" alt="edit" title="Edit Post">
+                      </a>
+                    </td>
+                  </tr>  
+                </tbody>
+              </table>                    
+        </div>
+      </div>
+  </div>  
+</div>

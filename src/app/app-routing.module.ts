@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CreatepostComponent } from './createpost/createpost.component';
-import { CreateuserComponent } from './createuser/createuser.component';
-import { HomeComponent } from './home/home.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { CreatepostComponent } from './posts/createpost/createpost.component';
+import { CreateuserComponent } from './users/createuser/createuser.component';
+import { PostsComponent } from './posts/posts.component';
+import { NotfoundComponent } from './shared/notfound/notfound.component';
 import { UsersComponent } from './users/users.component';
+import { UserpostComponent } from './users/userpost/userpost.component';
+import { UpdatepostComponent } from './posts/updatepost/updatepost.component';
+import { UpdateuserComponent } from './users/updateuser/updateuser.component';
 
 
 const routes: Routes = [
   {
-    path:"home",
-    component:HomeComponent
+    path:"posts",
+    component:PostsComponent
   },
   {
     path:"users",
@@ -25,8 +28,20 @@ const routes: Routes = [
     component:CreateuserComponent
   },
   {
+    path:"userposts",
+    component:UserpostComponent
+  },
+  {
+    path:"updatepost",
+    component:UpdatepostComponent
+  },
+  {
+    path:"updateuser",
+    component:UpdateuserComponent
+  },
+  {
     path:"",
-    component:HomeComponent,
+    component:PostsComponent,
     pathMatch:"full"
   },
   {

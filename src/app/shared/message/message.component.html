@@ -1,0 +1,12 @@
+<div class="alert alert-success alert-dismissible" *ngIf="showSuccessMessage"
+style="margin-left: 0%;margin-right: 0%;margin-bottom: 0%;position:absolute;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Success!</strong> {{response}}
+  </div>
+
+  <div class="alert alert-danger alert-dismissible" *ngIf="showErrorMessage"
+  style="margin-left: 0%;margin-right: 0%;margin-bottom: 0%;position: absolute;">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>Error!</strong> Please look at below error.
+    <p>{{response|json}}</p>
+  </div>
